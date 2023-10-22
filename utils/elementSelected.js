@@ -35,6 +35,7 @@ async function getElement(s) {
 
 elements.forEach(function (e) {
   e.addEventListener("click", function () {
+    showAside();
     if (window.innerWidth <= 780) {
       elements.forEach(function (s) {
         s.style.border = "3px solid rgba(0, 0, 0, 0.3)";

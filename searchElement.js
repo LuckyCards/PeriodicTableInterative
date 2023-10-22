@@ -4,7 +4,7 @@ var rotated = false;
 
 buttonSearch.addEventListener("click", () => {
   const searchBar = document.getElementById("search-bar");
-
+  //searchBar.focus()
   // atualizar o evento qnd clicar no window
   if (window.innerWidth <= 780) {
     animateRotationButtonResponsive();

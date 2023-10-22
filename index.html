@@ -43,7 +43,7 @@
         placeholder="Procurar elemento..." />
     </header>
     <div id="flexbox">
-      <div class="container-periodicTable">
+      <main class="container-periodicTable">
         <!-- Guarda todos os botões do indice de elementos  -->
         <div class="container-index">
           <ul id="buttons-index">
@@ -1111,9 +1111,12 @@
             </li>
           </ul>
         </div>
-      </div>
+      </main>
 
-      <div class="container-informationElement">
+      <aside class="container-informationElement">
+        <button onclick="hideAside()">
+          X
+        </button>
         <div id="title-info">
           <h3 id="name-atomic-info">Hidrogênio</h3>
           <span id="class-atomic-info">Ametal</span>
@@ -1154,12 +1157,13 @@
             </p>
           </div>
         </div>
-      </div>
+      </aside>
     </div>
 
     <script src="utils/tableFunctions.js"></script>
     <script src="utils/elementSelected.js"></script>
     <script src="scriptIndexButtons.js"></script>
     <script src="searchElement.js"></script>
+    <script src="asideRemoval.js"></script>
   </body>
 </html>
