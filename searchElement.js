@@ -5,6 +5,7 @@ var rotated = false;
 buttonSearch.addEventListener("click", () => {
   const searchBar = document.getElementById("search-bar");
 
+  // atualizar o evento qnd clicar no window
   if (window.innerWidth <= 780) {
     animateRotationButtonResponsive();
     searchBar.addEventListener("input", (e) => {
@@ -32,7 +33,7 @@ function resizeGridSize() {
   })
   
   const grid = document.querySelector("#elements-blocks");
-  console.log(grid.style.gridTemplateColumns)
+  
   grid.style.gridTemplateColumns = `repeat(${activatedElements}, 80px)`;
 }
 
