@@ -1,0 +1,1280 @@
+:root {
+  --noblegas-color: hsl(0, 45%, 40%);
+  --alkali-metals-color: hsl(36, 45%, 40%);
+  --alkaline-earth-metals-color: hsl(72, 45%, 40%);
+  --halogens-color: hsl(108, 45%, 30%);
+  --metalloids-color: hsl(144, 35%, 40%);
+  --post-transition-metals-color: hsl(180, 45%, 30%);
+  --transition-metals-color: hsl(216, 45%, 35%);
+  --reactive-nonmetals-color: hsl(252, 35%, 40%);
+  --actinides-color: hsl(288, 45%, 35%);
+  --lanthanides-color: hsl(324, 45%, 35%);
+
+  --background-color: hsl(260, 25%, 15%);
+  --background-menu-color: hsl(260, 35%, 10%);
+  --background-3dmodel-color: hsl(260, 35%, 14%);
+  --background-button-color: hsl(260, 35%, 38%);
+  --text-bright-color: rgba(255, 255, 255, 1);
+  --text-dark-color: rgba(0, 0, 0, 1);
+}
+
+@mixin positio($num1, $num2) {
+  grid-area: #{$num1} / #{$num2} / #{calc($num1 + 1)} / #{calc($num2 + 1)};
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+html {
+  width: fit-content;
+}
+
+body {
+  background: var(--background-color);
+}
+
+@media (min-width: 780px) {
+  /* PARA DESKTOP */
+  .container-header {
+    position: fixed;
+    display: block;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    z-index: 3;
+    background-color: var(--background-menu-color);
+
+    h1 {
+      text-align: center;
+      color: var(--text-bright-color);
+      font-size: 2.9rem;
+      font-family: "Comfortaa", cursive;
+      padding: 15px;
+      cursor: default;
+    }
+
+    #search-button {
+      position: absolute;
+      right: 0;
+      background: var(--background-button-color);
+      display: flex;
+      width: 33px;
+      height: 33px;
+      border-radius: 50%;
+      margin-right: 20px;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      overflow: hidden;
+      z-index: 2;
+
+      #search-button-icon {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        left: 4.5px;
+        color: rgb(255, 255, 255);
+        transform: rotateZ(0deg);
+        transition: transform 0.5s;
+        gap: 10px;
+
+        #search-icon {
+          font-size: 21px;
+        }
+        #close-icon {
+          font-size: 27px;
+          margin-right: -1px;
+        }
+      }
+    }
+
+    #search-bar {
+      height: 30px;
+      background-color: var(--background-3dmodel-color);
+      border-radius: 50px 0 0 50px;
+      border: 1px solid var(--text-bright-color);
+      color: var(--text-bright-color);
+      width: 260px;
+      user-select: none;
+      padding: 0 8px;
+      font-size: 17px;
+      font-family: "Comfortaa";
+      transform-origin: top right;
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      transition: transform 0.3s;
+      transform: scaleX(0);
+    }
+  }
+
+  #flexbox {
+    display: flex;
+    width: 100%;
+  }
+
+  .container-periodicTable {
+    display: flex;
+    flex-wrap: wrap;
+    top: 80px;
+    position: relative;
+    padding: 0 70px;
+    width: calc(100vw - 480px);
+    height: 836px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* Indice da Tabela Periodica*/
+    .container-index {
+      position: absolute;
+      z-index: 2;
+      ul {
+        display: flex;
+        width: 1308px;
+      }
+
+      button {
+        color: var(--text-bright-color);
+        position: relative;
+        display: flex;
+        font-family: "Comfortaa", cursive;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        padding: 15px;
+        justify-content: center;
+        width: max-content;
+        height: 50px;
+        align-items: center;
+        background: none;
+        border-style: none;
+        user-select: none;
+
+        margin: 3px;
+
+        &:hover {
+          padding-top: 10px;
+        }
+      }
+
+      .buttonBackground {
+        width: 100%;
+        padding-top: 5px;
+        position: absolute;
+        bottom: 0px;
+        z-index: -1;
+
+        transition: padding-top 0.5s;
+      }
+    }
+
+    /* Tabela Periodica*/
+    .container-blocks {
+      width: fit-content;
+      height: fit-content;
+      margin-top: 115px;
+      padding-right: 40px;
+      transform: scale(1.06);
+      transform-origin: top left;
+      #elements-blocks {
+        display: grid;
+        justify-items: center;
+        justify-content: center;
+        grid-template-columns: repeat(3, 65px) 10px repeat(15, 65px);
+        gap: 3px;
+
+        li:nth-child(n + 89):nth-child(-n + 117) {
+          margin-bottom: 13px;
+        }
+
+        /* ELEMENTOS QUADRADOS */
+        li {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          width: 65px;
+          height: 65px;
+          cursor: pointer;
+          padding: 1px;
+          border: 3px solid rgba(0, 0, 0, 0.3);
+
+          user-select: none;
+
+          justify-content: space-between;
+          background: var(--background-color);
+          border-radius: 3px;
+          color: var(--text-bright-color);
+          transition: border 0.3s;
+
+          .number-atomic {
+            text-align: left;
+            margin-left: 1px;
+            margin-top: -1px;
+            font-size: 10px;
+            font-family: "Karla", sans-serif;
+            font-weight: 500;
+
+            transform: scaleY(1.15);
+          }
+
+          .symbol {
+            text-align: center;
+            font-size: 26px;
+            line-height: 26px;
+            font-family: "Comfortaa", cursive;
+            font-weight: 300;
+            letter-spacing: -0.8px;
+          }
+
+          .name-atomic {
+            text-align: center;
+            margin-top: -0px;
+            font-size: 11px;
+            margin-bottom: 1px;
+            font-family: "Karla", sans-serif;
+            font-weight: 500;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transform: scaleY(1.15);
+          }
+
+          .weight-atomic {
+            display: none;
+            font-family: "Karla", sans-serif;
+          }
+
+          .valence-shell {
+            display: none;
+            font-family: "Karla", sans-serif;
+          }
+
+          &:hover {
+            border: white solid 1px !important;
+
+            z-index: 2;
+
+            transition: transform 0.3s;
+            animation: bounce 0.3s forwards;
+
+            .weight-atomic {
+              display: flex;
+              position: absolute;
+              bottom: 1px;
+              left: 1.5px;
+              font-size: 8px;
+            }
+
+            .valence-shell {
+              display: flex;
+              max-width: min-content;
+              position: absolute;
+              font-size: 8.5px;
+              text-align: end;
+              top: 2px;
+              right: 2px;
+              line-height: 8.5px;
+            }
+
+            .name-atomic {
+              margin-bottom: 10px;
+              font-size: 8.5px;
+              text-align: left;
+              margin-left: 0.5px;
+              transform: scaleY(1);
+            }
+
+            .symbol {
+              font-size: 23px;
+              line-height: 18px;
+              text-align: left;
+              margin-left: 0.5px;
+              margin-bottom: -3px;
+            }
+
+            .number-atomic {
+              font-size: 9px;
+              margin-top: 1px;
+              margin-bottom: -2px;
+            }
+          }
+        }
+      }
+
+      /* ELEMENTOS NA GRADE */
+      #elements-blocks {
+        #H {
+          @include positio(1, 1);
+        }
+
+        #He {
+          @include positio(1, 19);
+        }
+
+        #Li {
+          @include positio(2, 1);
+        }
+
+        #Be {
+          @include positio(2, 2);
+        }
+
+        #B {
+          @include positio(2, 14);
+        }
+
+        #C {
+          @include positio(2, 15);
+        }
+
+        #N {
+          @include positio(2, 16);
+        }
+
+        #O {
+          @include positio(2, 17);
+        }
+
+        #F {
+          @include positio(2, 18);
+        }
+
+        #Ne {
+          @include positio(2, 19);
+        }
+
+        #Na {
+          @include positio(3, 1);
+        }
+
+        #Mg {
+          @include positio(3, 2);
+        }
+
+        #Al {
+          @include positio(3, 14);
+        }
+
+        #Si {
+          @include positio(3, 15);
+        }
+
+        #P {
+          @include positio(3, 16);
+        }
+
+        #S {
+          @include positio(3, 17);
+        }
+
+        #Cl {
+          @include positio(3, 18);
+        }
+
+        #Ar {
+          @include positio(3, 19);
+        }
+
+        #K {
+          @include positio(4, 1);
+        }
+
+        #Ca {
+          @include positio(4, 2);
+        }
+
+        #Sc {
+          @include positio(4, 3);
+        }
+
+        #Ti {
+          @include positio(4, 5);
+        }
+
+        #V {
+          @include positio(4, 6);
+        }
+
+        #Cr {
+          @include positio(4, 7);
+        }
+
+        #Mn {
+          @include positio(4, 8);
+        }
+
+        #Fe {
+          @include positio(4, 9);
+        }
+
+        #Co {
+          @include positio(4, 10);
+        }
+
+        #Ni {
+          @include positio(4, 11);
+        }
+
+        #Cu {
+          @include positio(4, 12);
+        }
+
+        #Zn {
+          @include positio(4, 13);
+        }
+
+        #Ga {
+          @include positio(4, 14);
+        }
+        #Ge {
+          @include positio(4, 15);
+        }
+
+        #As {
+          @include positio(4, 16);
+        }
+
+        #Se {
+          @include positio(4, 17);
+        }
+
+        #Br {
+          @include positio(4, 18);
+        }
+
+        #Kr {
+          @include positio(4, 19);
+        }
+
+        #Rb {
+          @include positio(5, 1);
+        }
+
+        #Sr {
+          @include positio(5, 2);
+        }
+
+        #Y {
+          @include positio(5, 3);
+        }
+
+        #Zr {
+          @include positio(5, 5);
+        }
+
+        #Nb {
+          @include positio(5, 6);
+        }
+
+        #Mo {
+          @include positio(5, 7);
+        }
+
+        #Tc {
+          @include positio(5, 8);
+        }
+
+        #Ru {
+          @include positio(5, 9);
+        }
+
+        #Rh {
+          @include positio(5, 10);
+        }
+
+        #Pd {
+          @include positio(5, 11);
+        }
+
+        #Ag {
+          @include positio(5, 12);
+        }
+
+        #Cd {
+          @include positio(5, 13);
+        }
+
+        #In {
+          @include positio(5, 14);
+        }
+
+        #Sn {
+          @include positio(5, 15);
+        }
+
+        #Sb {
+          @include positio(5, 16);
+        }
+
+        #Te {
+          @include positio(5, 17);
+        }
+
+        #I {
+          @include positio(5, 18);
+        }
+
+        #Xe {
+          @include positio(5, 19);
+        }
+
+        #Cs {
+          @include positio(6, 1);
+        }
+
+        #Ba {
+          @include positio(6, 2);
+        }
+
+        #La {
+          @include positio(6, 3);
+        }
+
+        /* SERIE DOS LANTANIDEOS */
+        #Ce {
+          @include positio(8, 5);
+        }
+
+        #Pr {
+          @include positio(8, 6);
+        }
+
+        #Nd {
+          @include positio(8, 7);
+        }
+
+        #Pm {
+          @include positio(8, 8);
+        }
+
+        #Sm {
+          @include positio(8, 9);
+        }
+
+        #Eu {
+          @include positio(8, 10);
+        }
+
+        #Gd {
+          @include positio(8, 11);
+        }
+
+        #Tb {
+          @include positio(8, 12);
+        }
+
+        #Dy {
+          @include positio(8, 13);
+        }
+
+        #Ho {
+          @include positio(8, 14);
+        }
+
+        #Er {
+          @include positio(8, 15);
+        }
+
+        #Tm {
+          @include positio(8, 16);
+        }
+
+        #Yb {
+          @include positio(8, 17);
+        }
+
+        #Lu {
+          @include positio(8, 18);
+        }
+
+        /*FIM DA SERIE DOS LANTANDIDEOS */
+
+        #Hf {
+          @include positio(6, 5);
+        }
+
+        #Ta {
+          @include positio(6, 6);
+        }
+
+        #W {
+          @include positio(6, 7);
+        }
+
+        #Re {
+          @include positio(6, 8);
+        }
+
+        #Os {
+          @include positio(6, 9);
+        }
+
+        #Ir {
+          @include positio(6, 10);
+        }
+
+        #Pt {
+          @include positio(6, 11);
+        }
+
+        #Au {
+          @include positio(6, 12);
+        }
+
+        #Hg {
+          @include positio(6, 13);
+        }
+
+        #Tl {
+          @include positio(6, 14);
+        }
+
+        #Pb {
+          @include positio(6, 15);
+        }
+
+        #Bi {
+          @include positio(6, 16);
+        }
+
+        #Po {
+          @include positio(6, 17);
+        }
+
+        #At {
+          @include positio(6, 18);
+        }
+
+        #Rn {
+          @include positio(6, 19);
+        }
+
+        #Fr {
+          @include positio(7, 1);
+        }
+
+        #Ra {
+          @include positio(7, 2);
+        }
+
+        #Ac {
+          @include positio(7, 3);
+        }
+
+        /* SERIE DOS ACTINIOS */
+
+        #Th {
+          @include positio(9, 5);
+        }
+
+        #Pa {
+          @include positio(9, 6);
+        }
+
+        #U {
+          @include positio(9, 7);
+        }
+
+        #Np {
+          @include positio(9, 8);
+        }
+
+        #Pu {
+          @include positio(9, 9);
+        }
+
+        #Am {
+          @include positio(9, 10);
+        }
+
+        #Cm {
+          @include positio(9, 11);
+        }
+
+        #Bk {
+          @include positio(9, 12);
+        }
+
+        #Cf {
+          @include positio(9, 13);
+        }
+
+        #Es {
+          @include positio(9, 14);
+        }
+
+        #Fm {
+          @include positio(9, 15);
+        }
+
+        #Md {
+          @include positio(9, 16);
+        }
+
+        #No {
+          @include positio(9, 17);
+        }
+
+        #Lr {
+          @include positio(9, 18);
+        }
+
+        /* FIM DA SERIE DOS ACTINIDEOS */
+
+        #Rf {
+          @include positio(7, 5);
+        }
+
+        #Db {
+          @include positio(7, 6);
+        }
+
+        #Sg {
+          @include positio(7, 7);
+        }
+
+        #Bh {
+          @include positio(7, 8);
+        }
+
+        #Hs {
+          @include positio(7, 9);
+        }
+
+        #Mt {
+          @include positio(7, 10);
+        }
+
+        #Ds {
+          @include positio(7, 11);
+        }
+
+        #Rg {
+          @include positio(7, 12);
+        }
+
+        #Cn {
+          @include positio(7, 13);
+        }
+
+        #Nh {
+          @include positio(7, 14);
+        }
+
+        #Fl {
+          @include positio(7, 15);
+        }
+
+        #Mc {
+          @include positio(7, 16);
+        }
+
+        #Lv {
+          @include positio(7, 17);
+        }
+
+        #Ts {
+          @include positio(7, 18);
+        }
+
+        #Og {
+          @include positio(7, 19);
+        }
+      }
+
+      /* CATEGORIAS DOS ELEMENTOS */
+      #elements-blocks {
+        /* Gases Nobres  */
+
+        .noblegas {
+          background-color: var(--noblegas-color);
+          transition: filter 0.2s;
+        }
+        /* Metais Alcalinos */
+        .alkali-metals {
+          background-color: var(--alkali-metals-color);
+          transition: filter 0.2s;
+        }
+
+        /* Metais Alcalino-terrosos*/
+        .alkaline-earth-metals {
+          background-color: var(--alkaline-earth-metals-color);
+          transition: filter 0.2s;
+        }
+
+        /* Metais de Transição */
+        .transition-metals {
+          background-color: var(--transition-metals-color);
+          transition: filter 0.2s;
+        }
+
+        /* metalóides */
+        .metalloids {
+          background-color: var(--metalloids-color);
+          transition: filter 0.2s;
+        }
+
+        /* Metais Pós-transição */
+        .post-transition-metals {
+          background-color: var(--post-transition-metals-color);
+          transition: filter 0.2s;
+        }
+
+        /* Ametais Reativos */
+        .reactive-nonmetals {
+          background-color: var(--reactive-nonmetals-color);
+          transition: filter 0.2s;
+        }
+
+        /* Halogênios */
+        .halogens {
+          background-color: var(--halogens-color);
+          transition: filter 0.2s;
+        }
+
+        /* Actinídeos */
+        .actinides {
+          background-color: var(--actinides-color);
+          transition: filter 0.2s;
+        }
+
+        /* Lantanídeos */
+        .lanthanides {
+          background-color: var(--lanthanides-color);
+          transition: filter 0.2s;
+        }
+      }
+    }
+  }
+
+  .container-informationElement {
+    position: fixed;
+    right: 0;
+    top: 80px;
+    z-index: 2;
+    overflow-x: hidden;
+
+    flex-wrap: wrap;
+
+    width: 480px;
+    height: calc(100vh - 80px);
+    padding-left: 50px;
+    padding: 20px;
+
+    color: var(--text-bright-color);
+    background-color: var(--background-menu-color);
+
+    #title-info {
+      #name-atomic-info {
+        font-size: 43px;
+        font-family: "Comfortaa";
+        margin-bottom: 8px;
+      }
+      #symbol-atomic-info {
+        font-size: 30px;
+      }
+
+      #class-atomic-info {
+        font-size: 22px;
+        font-family: "Noto Sans Bengali";
+      }
+    }
+
+    #main-info {
+      #viewer3d-info {
+        margin: 20px 0;
+        width: 100%;
+        background-color: var(--background-3dmodel-color);
+        height: 250px;
+      }
+
+      #description-atomic-info {
+        text-align: justify;
+        font-size: 18px;
+        font-family: "Noto Sans Bengali";
+        margin-bottom: 15px;
+        text-indent: 30px;
+      }
+
+      #details-info {
+        font-size: 17px;
+        font-family: "Noto Sans Bengali";
+
+        span {
+          font-size: 21px;
+        }
+      }
+    }
+  }
+}
+
+/* PARA MOBILE */
+
+@media (max-width: 780px) {
+  .container-header {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    z-index: 3;
+    background-color: var(--background-menu-color);
+    overflow: hidden;
+
+    h1 {
+      text-align: center;
+      color: var(--text-bright-color);
+      font-family: "Comfortaa", cursive;
+      font-size: 22px;
+      padding: 0 55px;
+      user-select: none;
+      transition: transform 0.3s;
+      position: absolute;
+      transform: translateY(0px);
+      cursor: default;
+    }
+    
+    #search-button {
+      position: absolute;
+      right: 0;
+      background: var(--background-button-color);
+      display: flex;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 20px;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      overflow: hidden;
+
+      #search-button-icon {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        left: 4.5px;
+        color: rgb(255, 255, 255);
+        transform: rotateZ(0deg);
+        transition: transform 0.5s;
+        gap: 10px;
+
+        #search-icon {
+          font-size: 19px;
+        }
+        #close-icon {
+          font-size: 24px;
+          margin-right: -2px;
+        }
+      }
+    }
+
+    #search-bar {
+      height: 30px;
+      background-color: var(--background-button-color);
+      border-radius: 50px;
+      border: 1px solid var(--text-bright-color);
+      color: var(--text-bright-color);
+      width: 230px;
+      user-select: none;
+      padding: 0 8px;
+      font-size: 17px;
+      font-family: "Comfortaa";
+      transition: transform 0.3s;
+      transform: translateY(-80px);
+    }
+  }
+
+  #flexbox {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container-periodicTable {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    width: 100vw;
+    height: 230px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    /* INDICE DA TABELA PERIODICA */
+    .container-index {
+      z-index: 2;
+      width: 100vw;
+      position: absolute;
+      overflow-x: auto;
+
+      ul {
+        display: flex;
+        width: 100vw;
+        overflow-x: auto;
+        padding: 5px;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      button {
+        position: relative;
+        color: var(--text-bright-color);
+        display: flex;
+        min-width: 100px;
+        height: 35px;
+        font-family: "Comfortaa", cursive;
+        font-weight: 600;
+        font-size: 10px;
+        margin: 3px;
+        padding: 5px;
+        padding-bottom: 5px;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        border-style: none;
+        user-select: none;
+        cursor: pointer;
+        &:hover {
+          padding-top: 1px;
+        }
+      }
+
+      .buttonBackground {
+        width: 100%;
+        padding-top: 5px;
+        position: absolute;
+        bottom: 0px;
+        z-index: -1;
+
+        transition: padding-top 0.5s;
+      }
+    }
+
+    /* TABELA PERIODICA */
+    .container-blocks {
+      width: fit-content;
+      height: fit-content;
+      margin-top: 70px;
+      padding: 0 15px;
+      transform: scale(1.3);
+      transform-origin: top left;
+
+      /* BLOCOS DE ELEMENTOS */
+      #elements-blocks {
+        display: grid;
+        justify-items: center;
+        justify-content: center;
+        grid-template-columns: repeat(118, 80px);
+        gap: 5px;
+
+        /* ELEMENTOS QUADRADOS */
+        li {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          width: 80px;
+          height: 80px;
+          cursor: pointer;
+          padding: 2px;
+          border: 3px solid rgba(0, 0, 0, 0.3);
+          border-radius: 7px;
+          justify-content: space-between;
+
+          user-select: none;
+
+          background: var(--background-color);
+          color: var(--text-bright-color);
+          transition: border 0.3s;
+
+          .number-atomic {
+            text-align: left;
+            font-size: 12px;
+            font-family: "Karla", sans-serif;
+            font-weight: 500;
+            line-height: 10px;
+          }
+
+          .symbol {
+            text-align: left;
+            font-size: 25px;
+            line-height: 27px;
+            font-family: "Comfortaa", cursive;
+            margin-top: 5px;
+            margin-bottom: -1px;
+            font-weight: 400;
+          }
+
+          .name-atomic {
+            text-align: center;
+            font-family: "Karla", sans-serif;
+            font-weight: 500;
+            max-width: 100%;
+            text-align: left;
+            font-size: 10.1px;
+            overflow: hidden;
+            width: 58px;
+            text-overflow: ellipsis;
+            transform: scaleY(1.2);
+          }
+
+          .weight-atomic {
+            display: flex;
+            font-size: 12px;
+            font-family: "Karla", sans-serif;
+          }
+
+          .valence-shell {
+            display: flex;
+            max-width: min-content;
+            font-family: "Karla", sans-serif;
+            font-size: 10.5px;
+            line-height: 10.1px;
+            text-align: end;
+            position: absolute;
+            top: 2px;
+            right: 2px;
+          }
+        }
+      }
+
+      /* CATEGORIAS DOS ELEMENTOS */
+      #elements-blocks {
+        /* Gases Nobres  */
+        .noblegas {
+          background-color: var(--noblegas-color);
+        }
+        /* Metais Alcalinos */
+        .alkali-metals {
+          background-color: var(--alkali-metals-color);
+        }
+
+        /* Metais Alcalino-terrosos*/
+        .alkaline-earth-metals {
+          background-color: var(--alkaline-earth-metals-color);
+        }
+
+        /* Metais de Transição */
+        .transition-metals {
+          background-color: var(--transition-metals-color);
+        }
+
+        /* metalóides */
+        .metalloids {
+          background-color: var(--metalloids-color);
+        }
+
+        /* Metais Pós-transição */
+        .post-transition-metals {
+          background-color: var(--post-transition-metals-color);
+        }
+
+        /* Ametais Reativos */
+        .reactive-nonmetals {
+          background-color: var(--reactive-nonmetals-color);
+        }
+
+        /* Halogênios */
+        .halogens {
+          background-color: var(--halogens-color);
+        }
+
+        /* Actinídeos */
+        .actinides {
+          background-color: var(--actinides-color);
+        }
+
+        /* Lantanídeos */
+        .lanthanides {
+          background-color: var(--lanthanides-color);
+        }
+      }
+    }
+  }
+
+  .container-informationElement {
+    z-index: 2;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 250px;
+    width: 100vw;
+    height: 100%;
+    padding: 20px;
+
+    color: var(--text-bright-color);
+    background-color: var(--background-menu-color);
+
+    #title-info {
+      #name-atomic-info {
+        font-size: 48px;
+        font-family: "Comfortaa";
+      }
+      #symbol-atomic-info {
+        font-size: 30px;
+      }
+
+      #class-atomic-info {
+        font-size: 22px;
+        font-family: "Noto Sans Bengali";
+      }
+    }
+
+    #main-info {
+      #viewer3d-info {
+        margin: 20px 0;
+        width: 100%;
+        background-color: var(--background-3dmodel-color);
+        height: 320px;
+      }
+
+      #description-atomic-info {
+        hyphens: auto;
+        text-align: justify;
+        font-size: 23px;
+        font-family: "Noto Sans Bengali";
+        margin-bottom: 15px;
+        text-indent: 30px;
+      }
+
+      #details-info {
+        font-size: 20px;
+        font-family: "Noto Sans Bengali";
+
+        span {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+/**/
+/**/
+/* ----------------------------------------------- */
+/* ANIMAÇÕES */
+@keyframes bounce {
+  0% {
+    transform: scale(100%);
+  }
+
+  60% {
+    transform: scale(208%);
+  }
+
+  92% {
+    transform: scale(193%);
+  }
+
+  100% {
+    transform: scale(200%);
+  }
+}

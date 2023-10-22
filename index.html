@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabela Periódica</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/images/icon.png"
+      type="image/x-icon" />
+    <link rel="stylesheet" href="style.scss" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Karla:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </head>
+  <body>
+    <header class="container-header">
+      <h1>Tabela Periódica</h1>
+      <div id="search-button">
+        <div id="search-button-icon">
+          <ion-icon name="search" id="search-icon"></ion-icon>
+          <ion-icon name="close" id="close-icon"></ion-icon>
+        </div>
+      </div>
+      <form>
+        <input
+          type="text"
+          name=""
+          id="search-bar"
+          placeholder="Procurar elemento..." />
+      </form>
+    </header>
+    <div id="flexbox">
+      <div class="container-periodicTable">
+        <!-- Guarda todos os botões do indice de elementos  -->
+        <div class="container-index">
+          <ul id="buttons-index">
+            <!-- AMETAIS REATIVOS -->
+            <button
+              data-className="reactive-nonmetals"
+              class="button-filter"
+              id="button-reactivenonmetal">
+              Ametais Reativos
+              <div
+                class="buttonBackground"
+                style="background-color: var(--reactive-nonmetals-color)"></div>
+            </button>
+
+            <!-- METAIS ALCALINOS -->
+            <button
+              data-className="alkali-metals"
+              class="button-filter"
+              id="button-alkalimetal">
+              Metais Alcalinos
+              <div
+                class="buttonBackground"
+                style="background-color: var(--alkali-metals-color)"></div>
+            </button>
+
+            <!-- METAIS ALCALINO-TERROSOS -->
+            <button
+              data-className="alkaline-earth-metals"
+              class="button-filter"
+              id="button-alkaline-earthmetal">
+              Metais Alcalino-terrosos
+              <div
+                class="buttonBackground"
+                style="
+                  background-color: var(--alkaline-earth-metals-color);
+                "></div>
+            </button>
+
+            <!-- METAIS DE TRANSIÇÃO -->
+            <button
+              data-className="transition-metals"
+              class="button-filter"
+              id="button-transitionmetal">
+              Metais de Transição
+              <div
+                class="buttonBackground"
+                style="background-color: var(--transition-metals-color)"></div>
+            </button>
+
+            <!-- LANTANÍDEOS -->
+            <button
+              data-className="lanthanides"
+              class="button-filter"
+              id="button-lanthanide">
+              Lantanídeos
+              <div
+                class="buttonBackground"
+                style="background-color: var(--lanthanides-color)"></div>
+            </button>
+
+            <!-- ACTINÍDEOS  -->
+            <button
+              data-className="actinides"
+              class="button-filter"
+              id="button-actinide">
+              Actinídeos
+              <div
+                class="buttonBackground"
+                style="background-color: var(--actinides-color)"></div>
+            </button>
+
+            <!-- METAIS PÓS-TRANSIÇÃO -->
+            <button
+              data-className="post-transition-metals"
+              class="button-filter"
+              id="button-post-transitionmetal">
+              Metais Pós-transição
+              <div
+                class="buttonBackground"
+                style="
+                  background-color: var(--post-transition-metals-color);
+                "></div>
+            </button>
+
+            <!-- METALÓIDES -->
+            <button
+              data-className="metalloids"
+              class="button-filter"
+              id="button-metalloids">
+              Metalóides
+              <div
+                class="buttonBackground"
+                style="background-color: var(--metalloids-color)"></div>
+            </button>
+
+            <!-- HALOGÊNIOS -->
+            <button
+              data-className="halogens"
+              class="button-filter"
+              id="button-halogen">
+              Halogênios
+              <div
+                class="buttonBackground"
+                style="background-color: var(--halogens-color)"></div>
+            </button>
+
+            <!-- GASES NOBRES -->
+            <button
+              data-className="noblegas"
+              class="button-filter"
+              id="button-noblegas">
+              Gases Nobres
+              <div
+                class="buttonBackground"
+                style="background-color: var(--noblegas-color)"></div>
+            </button>
+          </ul>
+        </div>
+
+        <!-- Guarda todos os blocos de elementos -->
+        <div class="container-blocks">
+          <ul id="elements-blocks">
+            <li class="reactive-nonmetals" id="H">
+              <p class="number-atomic">1</p>
+              <p class="symbol">H</p>
+              <p class="name-atomic">Hidrogênio</p>
+              <p class="weight-atomic">1,008</p>
+              <p class="valence-shell">2</p>
+            </li>
+
+            <li class="noblegas" id="He">
+              <p class="number-atomic">2</p>
+              <p class="symbol">He</p>
+              <p class="name-atomic">Hélio</p>
+              <p class="weight-atomic">4,002</p>
+              <p class="valence-shell">1</p>
+            </li>
+
+            <li class="alkali-metals" id="Li">
+              <p class="number-atomic">3</p>
+              <p class="symbol">Li</p>
+              <p class="name-atomic">Lítio</p>
+              <p class="weight-atomic">6,94</p>
+              <p class="valence-shell">2 1</p>
+            </li>
+
+            <li class="alkaline-earth-metals" id="Be">
+              <p class="number-atomic">4</p>
+              <p class="symbol">Be</p>
+              <p class="name-atomic">Berílio</p>
+              <p class="weight-atomic">9,012</p>
+              <p class="valence-shell">2 2</p>
+            </li>
+
+            <li class="metalloids" id="B">
+              <p class="number-atomic">5</p>
+              <p class="symbol">B</p>
+              <p class="name-atomic">Boro</p>
+              <p class="weight-atomic">10,81</p>
+              <p class="valence-shell">2 3</p>
+            </li>
+
+            <li class="reactive-nonmetals" id="C">
+              <p class="number-atomic">6</p>
+              <p class="symbol">C</p>
+              <p class="name-atomic">Carbono</p>
+              <p class="weight-atomic">12,011</p>
+              <p class="valence-shell">2 4</p>
+            </li>
+
+            <li class="reactive-nonmetals" id="N">
+              <p class="number-atomic">7</p>
+              <p class="symbol">N</p>
+              <p class="name-atomic">Nitrogênio</p>
+              <p class="weight-atomic">14,007</p>
+              <p class="valence-shell">2 5</p>
+            </li>
+
+            <li class="reactive-nonmetals" id="O">
+              <p class="number-atomic">8</p>
+              <p class="symbol">O</p>
+              <p class="name-atomic">Oxigênio</p>
+              <p class="weight-atomic">15,999</p>
+              <p class="valence-shell">2 6</p>
+            </li>
+
+            <li class="halogens" id="F">
+              <p class="number-atomic">9</p>
+              <p class="symbol">F</p>
+              <p class="name-atomic">Flúor</p>
+              <p class="weight-atomic">18,999</p>
+              <p class="valence-shell">2 7</p>
+            </li>
+
+            <li class="noblegas" id="Ne">
+              <p class="number-atomic">10</p>
+              <p class="symbol">Ne</p>
+              <p class="name-atomic">Neônio</p>
+              <p class="weight-atomic">20,180</p>
+              <p class="valence-shell">2 8</p>
+            </li>
+
+            <li class="alkali-metals" id="Na">
+              <p class="number-atomic">11</p>
+              <p class="symbol">Na</p>
+              <p class="name-atomic">Sódio</p>
+              <p class="weight-atomic">22,990</p>
+              <p class="valence-shell">2 8 1</p>
+            </li>
+
+            <li class="alkaline-earth-metals" id="Mg">
+              <p class="number-atomic">12</p>
+              <p class="symbol">Mg</p>
+              <p class="name-atomic">Magnésio</p>
+              <p class="weight-atomic">24,305</p>
+              <p class="valence-shell">2 8 2</p>
+            </li>
+
+            <li class="post-transition-metals" id="Al">
+              <p class="number-atomic">13</p>
+              <p class="symbol">Al</p>
+              <p class="name-atomic">Alumínio</p>
+              <p class="weight-atomic">26,981</p>
+              <p class="valence-shell">2 8 3</p>
+            </li>
+
+            <li class="metalloids" id="Si">
+              <p class="number-atomic">14</p>
+              <p class="symbol">Si</p>
+              <p class="name-atomic">Silício</p>
+              <p class="weight-atomic">28,085</p>
+              <p class="valence-shell">2 8 4</p>
+            </li>
+
+            <li class="reactive-nonmetals" id="P">
+              <p class="number-atomic">15</p>
+              <p class="symbol">P</p>
+              <p class="name-atomic">Fósforo</p>
+              <p class="weight-atomic">30,974</p>
+              <p class="valence-shell">2 8 5</p>
+            </li>
+
+            <li class="reactive-nonmetals" id="S">
+              <p class="number-atomic">16</p>
+              <p class="symbol">S</p>
+              <p class="name-atomic">Enxofre</p>
+              <p class="weight-atomic">32,06</p>
+              <p class="valence-shell">2 8 6</p>
+            </li>
+
+            <li class="halogens" id="Cl">
+              <p class="number-atomic">17</p>
+              <p class="symbol">Cl</p>
+              <p class="name-atomic">Cloro</p>
+              <p class="weight-atomic">35,45</p>
+              <p class="valence-shell">2 8 7</p>
+            </li>
+
+            <li class="noblegas" id="Ar">
+              <p class="number-atomic">18</p>
+              <p class="symbol">Ar</p>
+              <p class="name-atomic">Argônio</p>
+              <p class="weight-atomic">39,95</p>
+              <p class="valence-shell">2 8 8</p>
+            </li>
+
+            <li class="alkali-metals" id="K">
+              <p class="number-atomic">19</p>
+              <p class="symbol">K</p>
+              <p class="name-atomic">Potássio</p>
+              <p class="weight-atomic">39,098</p>
+              <p class="valence-shell">2 8 8 1</p>
+            </li>
+
+            <li class="alkaline-earth-metals" id="Ca">
+              <p class="number-atomic">20</p>
+              <p class="symbol">Ca</p>
+              <p class="name-atomic">Cálcio</p>
+              <p class="weight-atomic">40,078</p>
+              <p class="valence-shell">2 8 8 2</p>
+            </li>
+
+            <li class="transition-metals" id="Sc">
+              <p class="number-atomic">21</p>
+              <p class="symbol">Sc</p>
+              <p class="name-atomic">Escândio</p>
+              <p class="weight-atomic">44,956</p>
+              <p class="valence-shell">2 8 9 2</p>
+            </li>
+
+            <li class="transition-metals" id="Ti">
+              <p class="number-atomic">22</p>
+              <p class="symbol">Ti</p>
+              <p class="name-atomic">Titânio</p>
+              <p class="weight-atomic">47,867</p>
+              <p class="valence-shell">2 8 10 2</p>
+            </li>
+
+            <li class="transition-metals" id="V">
+              <p class="number-atomic">23</p>
+              <p class="symbol">V</p>
+              <p class="name-atomic">Vanádio</p>
+              <p class="weight-atomic">50,942</p>
+              <p class="valence-shell">2 8 11 2</p>
+            </li>
+
+            <li class="transition-metals" id="Cr">
+              <p class="number-atomic">24</p>
+              <p class="symbol">Cr</p>
+              <p class="name-atomic">Cromo</p>
+              <p class="weight-atomic">51,996</p>
+              <p class="valence-shell">2 8 13 1</p>
+            </li>
+
+            <li class="transition-metals" id="Mn">
+              <p class="number-atomic">25</p>
+              <p class="symbol">Mn</p>
+              <p class="name-atomic">Manganês</p>
+              <p class="weight-atomic">54.938</p>
+              <p class="valence-shell">2 8 13 2</p>
+            </li>
+
+            <li class="transition-metals" id="Fe">
+              <p class="number-atomic">26</p>
+              <p class="symbol">Fe</p>
+              <p class="name-atomic">Ferro</p>
+              <p class="weight-atomic">54.938</p>
+              <p class="valence-shell">2 8 14 2</p>
+            </li>
+
+            <li class="transition-metals" id="Co">
+              <p class="number-atomic">27</p>
+              <p class="symbol">Co</p>
+              <p class="name-atomic">Cobalto</p>
+              <p class="weight-atomic">58.933</p>
+              <p class="valence-shell">2 8 15 2</p>
+            </li>
+
+            <li class="transition-metals" id="Ni">
+              <p class="number-atomic">28</p>
+              <p class="symbol">Ni</p>
+              <p class="name-atomic">Níquel</p>
+              <p class="weight-atomic">58.693</p>
+              <p class="valence-shell">2 8 16 2</p>
+            </li>
+
+            <li class="transition-metals" id="Cu">
+              <p class="number-atomic">29</p>
+              <p class="symbol">Cu</p>
+              <p class="name-atomic">Cobre</p>
+              <p class="weight-atomic">63.546</p>
+              <p class="valence-shell">2 8 18 1</p>
+            </li>
+
+            <li class="transition-metals" id="Zn">
+              <p class="number-atomic">30</p>
+              <p class="symbol">Zn</p>
+              <p class="name-atomic">Zinco</p>
+              <p class="weight-atomic">65.38</p>
+              <p class="valence-shell">2 8 18 2</p>
+            </li>
+
+            <li class="post-transition-metals" id="Ga">
+              <p class="number-atomic">31</p>
+              <p class="symbol">Ga</p>
+              <p class="name-atomic">Gálio</p>
+              <p class="weight-atomic">69.72</p>
+              <p class="valence-shell">2 8 18 3</p>
+            </li>
+
+            <li class="metalloids" id="Ge">
+              <p class="number-atomic">32</p>
+              <p class="symbol">Ge</p>
+              <p class="name-atomic">Germânio</p>
+              <p class="weight-atomic">72.63</p>
+              <p class="valence-shell">2 8 18 4</p>
+            </li>
+
+            <li class="metalloids" id="As">
+              <p class="number-atomic">33</p>
+              <p class="symbol">As</p>
+              <p class="name-atomic">Arsênio</p>
+              <p class="weight-atomic">74.921595</p>
+              <p class="valence-shell">2 8 18 5</p>
+            </li>
+
+            <li class="reactive-nonmetals" id="Se">
+              <p class="number-atomic">34</p>
+              <p class="symbol">Se</p>
+              <p class="name-atomic">Selênio</p>
+              <p class="weight-atomic">78.971</p>
+              <p class="valence-shell">2 8 18 6</p>
+            </li>
+
+            <li class="halogens" id="Br">
+              <p class="number-atomic">35</p>
+              <p class="symbol">Br</p>
+              <p class="name-atomic">Bromo</p>
+              <p class="weight-atomic">79.904</p>
+              <p class="valence-shell">2 8 18 7</p>
+            </li>
+
+            <li class="noblegas" id="Kr">
+              <p class="number-atomic">36</p>
+              <p class="symbol">Kr</p>
+              <p class="name-atomic">Criptônio</p>
+              <p class="weight-atomic">83.798</p>
+              <p class="valence-shell">2 8 18 8</p>
+            </li>
+
+            <li class="alkali-metals" id="Rb">
+              <p class="number-atomic">37</p>
+              <p class="symbol">Rb</p>
+              <p class="name-atomic">Rubídio</p>
+              <p class="weight-atomic">85.468</p>
+              <p class="valence-shell">2 8 18 1</p>
+            </li>
+
+            <li class="alkaline-earth-metals" id="Sr">
+              <p class="number-atomic">38</p>
+              <p class="symbol">Sr</p>
+              <p class="name-atomic">Estrôncio</p>
+              <p class="weight-atomic">87.62</p>
+              <p class="valence-shell">2 8 18 2</p>
+            </li>
+
+            <li class="transition-metals" id="Y">
+              <p class="number-atomic">39</p>
+              <p class="symbol">Y</p>
+              <p class="name-atomic">Ítrio</p>
+              <p class="weight-atomic">88.906</p>
+              <p class="valence-shell">2 8 18 9 2</p>
+            </li>
+
+            <li class="transition-metals" id="Zr">
+              <p class="number-atomic">40</p>
+              <p class="symbol">Zr</p>
+              <p class="name-atomic">Zircônio</p>
+              <p class="weight-atomic">91.224</p>
+              <p class="valence-shell">2 8 18 10 2</p>
+            </li>
+
+            <li class="transition-metals" id="Nb">
+              <p class="number-atomic">41</p>
+              <p class="symbol">Nb</p>
+              <p class="name-atomic">Nióbio</p>
+              <p class="weight-atomic">92.906</p>
+              <p class="valence-shell">2 8 18 12 1</p>
+            </li>
+
+            <li class="transition-metals" id="Mo">
+              <p class="number-atomic">42</p>
+              <p class="symbol">Mo</p>
+              <p class="name-atomic">Molibdênio</p>
+              <p class="weight-atomic">95.94</p>
+              <p class="valence-shell">2 8 18 13 1</p>
+            </li>
+
+            <li class="transition-metals" id="Tc">
+              <p class="number-atomic">43</p>
+              <p class="symbol">Tc</p>
+              <p class="name-atomic">Tecnécio</p>
+              <p class="weight-atomic">98</p>
+              <p class="valence-shell">2 8 18 13 2</p>
+            </li>
+
+            <li class="transition-metals" id="Ru">
+              <p class="number-atomic">44</p>
+              <p class="symbol">Ru</p>
+              <p class="name-atomic">Rutênio</p>
+              <p class="weight-atomic">101.07</p>
+              <p class="valence-shell">2 8 18 15 1</p>
+            </li>
+
+            <li class="transition-metals" id="Rh">
+              <p class="number-atomic">45</p>
+              <p class="symbol">Rh</p>
+              <p class="name-atomic">Ródio</p>
+              <p class="weight-atomic">102.91</p>
+              <p class="valence-shell">2 8 18 16 1</p>
+            </li>
+
+            <li class="transition-metals" id="Pd">
+              <p class="number-atomic">46</p>
+              <p class="symbol">Pd</p>
+              <p class="name-atomic">Paládio</p>
+              <p class="weight-atomic">106.42</p>
+              <p class="valence-shell">2 8 18 18</p>
+            </li>
+
+            <li class="transition-metals" id="Ag">
+              <p class="number-atomic">47</p>
+              <p class="symbol">Ag</p>
+              <p class="name-atomic">Prata</p>
+              <p class="weight-atomic">107.868</p>
+              <p class="valence-shell">2 8 18 18 1</p>
+            </li>
+
+            <li class="transition-metals" id="Cd">
+              <p class="number-atomic">48</p>
+              <p class="symbol">Cd</p>
+              <p class="name-atomic">Cádmio</p>
+              <p class="weight-atomic">112.411</p>
+              <p class="valence-shell">2 8 18 18 2</p>
+            </li>
+
+            <li class="post-transition-metals" id="In">
+              <p class="number-atomic">49</p>
+              <p class="symbol">In</p>
+              <p class="name-atomic">Índio</p>
+              <p class="weight-atomic">114.818</p>
+              <p class="valence-shell">2 8 18 18 2</p>
+            </li>
+
+            <li class="post-transition-metals" id="Sn">
+              <p class="number-atomic">50</p>
+              <p class="symbol">Sn</p>
+              <p class="name-atomic">Estanho</p>
+              <p class="weight-atomic">118.710</p>
+              <p class="valence-shell">2 8 18 18 4</p>
+            </li>
+
+            <li class="metalloids" id="Sb">
+              <p class="number-atomic">51</p>
+              <p class="symbol">Sb</p>
+              <p class="name-atomic">Antimônio</p>
+              <p class="weight-atomic">121.760</p>
+              <p class="valence-shell">2 8 18 18 5</p>
+            </li>
+
+            <li class="metalloids" id="Te">
+              <p class="number-atomic">52</p>
+              <p class="symbol">Te</p>
+              <p class="name-atomic">Telúrio</p>
+              <p class="weight-atomic">127.60</p>
+              <p class="valence-shell">2 8 18 18 6</p>
+            </li>
+
+            <li class="halogens" id="I">
+              <p class="number-atomic">53</p>
+              <p class="symbol">I</p>
+              <p class="name-atomic">Iodo</p>
+              <p class="weight-atomic">126.905</p>
+              <p class="valence-shell">2 8 18 18 7</p>
+            </li>
+
+            <li class="noblegas" id="Xe">
+              <p class="number-atomic">54</p>
+              <p class="symbol">Xe</p>
+              <p class="name-atomic">Xenônio</p>
+              <p class="weight-atomic">131.293</p>
+              <p class="valence-shell">2 8 18 18 8</p>
+            </li>
+
+            <li class="alkali-metals" id="Cs">
+              <p class="number-atomic">55</p>
+              <p class="symbol">Cs</p>
+              <p class="name-atomic">Césio</p>
+              <p class="weight-atomic">132.905</p>
+              <p class="valence-shell">2 8 18 18 8 1</p>
+            </li>
+
+            <li class="alkaline-earth-metals" id="Ba">
+              <p class="number-atomic">56</p>
+              <p class="symbol">Ba</p>
+              <p class="name-atomic">Bário</p>
+              <p class="weight-atomic">137.327</p>
+              <p class="valence-shell">2 8 18 18 8 2</p>
+            </li>
+
+            <li class="lanthanides" id="La">
+              <p class="number-atomic">57</p>
+              <p class="symbol">La</p>
+              <p class="name-atomic">Lantânio</p>
+              <p class="weight-atomic">138.905</p>
+              <p class="valence-shell">2 8 18 18 9 2</p>
+            </li>
+
+            <li class="lanthanides" id="Ce">
+              <p class="number-atomic">58</p>
+              <p class="symbol">Ce</p>
+              <p class="name-atomic">Cério</p>
+              <p class="weight-atomic">140.116</p>
+              <p class="valence-shell">2 8 18 19 9 2</p>
+            </li>
+
+            <li class="lanthanides" id="Pr">
+              <p class="number-atomic">59</p>
+              <p class="symbol">Pr</p>
+              <p class="name-atomic">Praseodímio</p>
+              <p class="weight-atomic">140.908</p>
+              <p class="valence-shell">2 8 18 21 8 2</p>
+            </li>
+
+            <li class="lanthanides" id="Nd">
+              <p class="number-atomic">60</p>
+              <p class="symbol">Nd</p>
+              <p class="name-atomic">Neodímio</p>
+              <p class="weight-atomic">144.243</p>
+              <p class="valence-shell">2 8 18 22 8 2</p>
+            </li>
+
+            <li class="lanthanides" id="Pm">
+              <p class="number-atomic">61</p>
+              <p class="symbol">Pm</p>
+              <p class="name-atomic">Promécio</p>
+              <p class="weight-atomic">(145)</p>
+              <p class="valence-shell">2 8 18 23 8 2</p>
+            </li>
+
+            <li class="lanthanides" id="Sm">
+              <p class="number-atomic">62</p>
+              <p class="symbol">Sm</p>
+              <p class="name-atomic">Samário</p>
+              <p class="weight-atomic">150.36</p>
+              <p class="valence-shell">2 8 18 24 8 2</p>
+            </li>
+
+            <li class="lanthanides" id="Eu">
+              <p class="number-atomic">63</p>
+              <p class="symbol">Eu</p>
+              <p class="name-atomic">Európio</p>
+              <p class="weight-atomic">151.964</p>
+              <p class="valence-shell">2 8 18 25 8 2</p>
+            </li>
+
+            <li class="lanthanides" id="Gd">
+              <p class="number-atomic">64</p>
+              <p class="symbol">Gd</p>
+              <p class="name-atomic">Gadolínio</p>
+              <p class="weight-atomic">157.25</p>
+              <p class="valence-shell">2</p>
+            </li>
+
+            <li class="lanthanides" id="Tb">
+              <p class="number-atomic">65</p>
+              <p class="symbol">Tb</p>
+              <p class="name-atomic">Térbio</p>
+              <p class="weight-atomic">158.925</p>
+              <p class="valence-shell">2 8 18 27 8 2</p>
+            </li>
+
+            <li class="lanthanides" id="Dy">
+              <p class="number-atomic">66</p>
+              <p class="symbol">Dy</p>
+              <p class="name-atomic">Disprósio</p>
+              <p class="weight-atomic">162.500</p>
+              <p class="valence-shell">2 8 18 28 8</p>
+            </li>
+
+            <li class="lanthanides" id="Ho">
+              <p class="number-atomic">67</p>
+              <p class="symbol">Ho</p>
+              <p class="name-atomic">Hólmio</p>
+              <p class="weight-atomic">164.930</p>
+              <p class="valence-shell">2 8 18 29 8 2</p>
+            </li>
+
+            <li class="lanthanides" id="Er">
+              <p class="number-atomic">68</p>
+              <p class="symbol">Er</p>
+              <p class="name-atomic">Érbio</p>
+              <p class="weight-atomic">167.259</p>
+              <p class="valence-shell">2 8 18 30 8 2</p>
+            </li>
+
+            <li class="lanthanides" id="Tm">
+              <p class="number-atomic">69</p>
+              <p class="symbol">Tm</p>
+              <p class="name-atomic">Túlio</p>
+              <p class="weight-atomic">168.934</p>
+              <p class="valence-shell">2 8 18 31 8 2</p>
+            </li>
+
+            <li class="lanthanides" id="Yb">
+              <p class="number-atomic">70</p>
+              <p class="symbol">Yb</p>
+              <p class="name-atomic">Itérbio</p>
+              <p class="weight-atomic">173.045</p>
+              <p class="valence-shell">2 8 18 32 8 2</p>
+            </li>
+
+            <li class="lanthanides" id="Lu">
+              <p class="number-atomic">71</p>
+              <p class="symbol">Lu</p>
+              <p class="name-atomic">Lutécio</p>
+              <p class="weight-atomic">174.967</p>
+              <p class="valence-shell">2 8 18 32 9 2</p>
+            </li>
+
+            <li class="transition-metals" id="Hf">
+              <p class="number-atomic">72</p>
+              <p class="symbol">Hf</p>
+              <p class="name-atomic">Háfnio</p>
+              <p class="weight-atomic">178.486</p>
+              <p class="valence-shell">2 8 18 32 10 2</p>
+            </li>
+
+            <li class="transition-metals" id="Ta">
+              <p class="number-atomic">73</p>
+              <p class="symbol">Ta</p>
+              <p class="name-atomic">Tântalo</p>
+              <p class="weight-atomic">180.948</p>
+              <p class="valence-shell">2 8 18 32 11 2</p>
+            </li>
+
+            <li class="transition-metals" id="W">
+              <p class="number-atomic">74</p>
+              <p class="symbol">W</p>
+              <p class="name-atomic">Tungstênio</p>
+              <p class="weight-atomic">183.84</p>
+              <p class="valence-shell">2 8 18 32 12 2</p>
+            </li>
+
+            <li class="transition-metals" id="Re">
+              <p class="number-atomic">75</p>
+              <p class="symbol">Re</p>
+              <p class="name-atomic">Rênio</p>
+              <p class="weight-atomic">186.207</p>
+              <p class="valence-shell">2 8 18 32 13 2</p>
+            </li>
+
+            <li class="transition-metals" id="Os">
+              <p class="number-atomic">76</p>
+              <p class="symbol">Os</p>
+              <p class="name-atomic">Ósmio</p>
+              <p class="weight-atomic">190.23</p>
+              <p class="valence-shell">2 8 18 32 14 2</p>
+            </li>
+
+            <li class="transition-metals" id="Ir">
+              <p class="number-atomic">77</p>
+              <p class="symbol">Ir</p>
+              <p class="name-atomic">Irídio</p>
+              <p class="weight-atomic">192.217</p>
+              <p class="valence-shell">2 8 18 32 15 2</p>
+            </li>
+
+            <li class="transition-metals" id="Pt">
+              <p class="number-atomic">78</p>
+              <p class="symbol">Pt</p>
+              <p class="name-atomic">Platina</p>
+              <p class="weight-atomic">195.084</p>
+              <p class="valence-shell">2 8 18 32 17 1</p>
+            </li>
+
+            <li class="transition-metals" id="Au">
+              <p class="number-atomic">79</p>
+              <p class="symbol">Au</p>
+              <p class="name-atomic">Ouro</p>
+              <p class="weight-atomic">196.967</p>
+              <p class="valence-shell">2 8 18 32 18 1</p>
+            </li>
+
+            <li class="transition-metals" id="Hg">
+              <p class="number-atomic">80</p>
+              <p class="symbol">Hg</p>
+              <p class="name-atomic">Mercúrio</p>
+              <p class="weight-atomic">200.592</p>
+              <p class="valence-shell">2 8 18 32 18 2</p>
+            </li>
+
+            <li class="post-transition-metals" id="Tl">
+              <p class="number-atomic">81</p>
+              <p class="symbol">Tl</p>
+              <p class="name-atomic">Tálio</p>
+              <p class="weight-atomic">204.382</p>
+              <p class="valence-shell">2 8 18 32 18 3</p>
+            </li>
+
+            <li class="post-transition-metals" id="Pb">
+              <p class="number-atomic">82</p>
+              <p class="symbol">Pb</p>
+              <p class="name-atomic">Chumbo</p>
+              <p class="weight-atomic">207.2</p>
+              <p class="valence-shell">2 8 18 32 18 4</p>
+            </li>
+
+            <li class="post-transition-metals" id="Bi">
+              <p class="number-atomic">83</p>
+              <p class="symbol">Bi</p>
+              <p class="name-atomic">Bismuto</p>
+              <p class="weight-atomic">208.980</p>
+              <p class="valence-shell">2 8 18 32 18 5</p>
+            </li>
+
+            <li class="post-transition-metals" id="Po">
+              <p class="number-atomic">84</p>
+              <p class="symbol">Po</p>
+              <p class="name-atomic">Polônio</p>
+              <p class="weight-atomic">(209)</p>
+              <p class="valence-shell">2 8 18 32 18 6</p>
+            </li>
+
+            <li class="halogens" id="At">
+              <p class="number-atomic">85</p>
+              <p class="symbol">At</p>
+              <p class="name-atomic">Ástato</p>
+              <p class="weight-atomic">(210)</p>
+              <p class="valence-shell">2 8 18 32 18 7</p>
+            </li>
+
+            <li class="noblegas" id="Rn">
+              <p class="number-atomic">86</p>
+              <p class="symbol">Rn</p>
+              <p class="name-atomic">Radônio</p>
+              <p class="weight-atomic">(222)</p>
+              <p class="valence-shell">2 8 18 32 18 8</p>
+            </li>
+
+            <li class="alkali-metals" id="Fr">
+              <p class="number-atomic">87</p>
+              <p class="symbol">Fr</p>
+              <p class="name-atomic">Frâncio</p>
+              <p class="weight-atomic">(223)</p>
+              <p class="valence-shell">2 8 18 32 18 8 1</p>
+            </li>
+
+            <li class="alkaline-earth-metals" id="Ra">
+              <p class="number-atomic">88</p>
+              <p class="symbol">Ra</p>
+              <p class="name-atomic">Rádio</p>
+              <p class="weight-atomic">(226)</p>
+              <p class="valence-shell">2 8 18 32 18 8 2</p>
+            </li>
+
+            <li class="actinides" id="Ac">
+              <p class="number-atomic">89</p>
+              <p class="symbol">Ac</p>
+              <p class="name-atomic">Actínio</p>
+              <p class="weight-atomic">(227)</p>
+              <p class="valence-shell">2 8 18 32 18 9 2</p>
+            </li>
+
+            <li class="actinides" id="Th">
+              <p class="number-atomic">90</p>
+              <p class="symbol">Th</p>
+              <p class="name-atomic">Tório</p>
+              <p class="weight-atomic">232.038</p>
+              <p class="valence-shell">2 8 18 32 18 10</p>
+            </li>
+
+            <li class="actinides" id="Pa">
+              <p class="number-atomic">91</p>
+              <p class="symbol">Pa</p>
+              <p class="name-atomic">Protactínio</p>
+              <p class="weight-atomic">231.0359</p>
+              <p class="valence-shell">2 8 18 32 20 9 2</p>
+            </li>
+
+            <li class="actinides" id="U">
+              <p class="number-atomic">92</p>
+              <p class="symbol">U</p>
+              <p class="name-atomic">Urânio</p>
+              <p class="weight-atomic">238.029</p>
+              <p class="valence-shell">2 8 18 32 21 9 2</p>
+            </li>
+
+            <li class="actinides" id="Np">
+              <p class="number-atomic">93</p>
+              <p class="symbol">Np</p>
+              <p class="name-atomic">Neptúnio</p>
+              <p class="weight-atomic">(237)</p>
+              <p class="valence-shell">2 8 18 32 22 9 2</p>
+            </li>
+
+            <li class="actinides" id="Pu">
+              <p class="number-atomic">94</p>
+              <p class="symbol">Pu</p>
+              <p class="name-atomic">Plutônio</p>
+              <p class="weight-atomic">(244)</p>
+              <p class="valence-shell">2 8 18 32 24 8 6</p>
+            </li>
+
+            <li class="actinides" id="Am">
+              <p class="number-atomic">95</p>
+              <p class="symbol">Am</p>
+              <p class="name-atomic">Amerício</p>
+              <p class="weight-atomic">(243)</p>
+              <p class="valence-shell">2 8 18 32 25 8 6</p>
+            </li>
+
+            <li class="actinides" id="Cm">
+              <p class="number-atomic">96</p>
+              <p class="symbol">Cm</p>
+              <p class="name-atomic">Cúrio</p>
+              <p class="weight-atomic">(247)</p>
+              <p class="valence-shell">2 8 18 32 25 9 2</p>
+            </li>
+
+            <li class="actinides" id="Bk">
+              <p class="number-atomic">97</p>
+              <p class="symbol">Bk</p>
+              <p class="name-atomic">Berquélio</p>
+              <p class="weight-atomic">(247)</p>
+              <p class="valence-shell">2 8 18 32 27 8 2</p>
+            </li>
+
+            <li class="actinides" id="Cf">
+              <p class="number-atomic">98</p>
+              <p class="symbol">Cf</p>
+              <p class="name-atomic">Califórnio</p>
+              <p class="weight-atomic">(251)</p>
+              <p class="valence-shell">2 8 18 32 28 8 2</p>
+            </li>
+
+            <li class="actinides" id="Es">
+              <p class="number-atomic">99</p>
+              <p class="symbol">Es</p>
+              <p class="name-atomic">Einstênio</p>
+              <p class="weight-atomic">(252)</p>
+              <p class="valence-shell">2 8 18 32 29 8 2</p>
+            </li>
+
+            <li class="actinides" id="Fm">
+              <p class="number-atomic">100</p>
+              <p class="symbol">Fm</p>
+              <p class="name-atomic">Férmio</p>
+              <p class="weight-atomic">(257)</p>
+              <p class="valence-shell">2 8 18 32 30 8 2</p>
+            </li>
+
+            <li class="actinides" id="Md">
+              <p class="number-atomic">101</p>
+              <p class="symbol">Md</p>
+              <p class="name-atomic">Mendelévio</p>
+              <p class="weight-atomic">(258)</p>
+              <p class="valence-shell">2 8 18 32 31 8 2</p>
+            </li>
+
+            <li class="actinides" id="No">
+              <p class="number-atomic">102</p>
+              <p class="symbol">No</p>
+              <p class="name-atomic">Nobélio</p>
+              <p class="weight-atomic">(259)</p>
+              <p class="valence-shell">2 8 18 32 32 8 2</p>
+            </li>
+
+            <li class="actinides" id="Lr">
+              <p class="number-atomic">103</p>
+              <p class="symbol">Lr</p>
+              <p class="name-atomic">Laurêncio</p>
+              <p class="weight-atomic">(266)</p>
+              <p class="valence-shell">2 8 18 32 32 8 3</p>
+            </li>
+
+            <li class="transition-metals" id="Rf">
+              <p class="number-atomic">104</p>
+              <p class="symbol">Rf</p>
+              <p class="name-atomic">Rutherfórdio</p>
+              <p class="weight-atomic">(267)</p>
+              <p class="valence-shell">2 8 18 32 32 8 4</p>
+            </li>
+
+            <li class="transition-metals" id="Db">
+              <p class="number-atomic">105</p>
+              <p class="symbol">Db</p>
+              <p class="name-atomic">Dúbnio</p>
+              <p class="weight-atomic">(270)</p>
+              <p class="valence-shell">2 8 18 32 32 10 2</p>
+            </li>
+
+            <li class="transition-metals" id="Sg">
+              <p class="number-atomic">106</p>
+              <p class="symbol">Sg</p>
+              <p class="name-atomic">Seabórgio</p>
+              <p class="weight-atomic">(271)</p>
+              <p class="valence-shell">2 8 18 32 32 10 2</p>
+            </li>
+
+            <li class="transition-metals" id="Bh">
+              <p class="number-atomic">107</p>
+              <p class="symbol">Bh</p>
+              <p class="name-atomic">Bóhrio</p>
+              <p class="weight-atomic">(270)</p>
+              <p class="valence-shell">2 8 18 32 32 10 2</p>
+            </li>
+
+            <li class="transition-metals" id="Hs">
+              <p class="number-atomic">108</p>
+              <p class="symbol">Hs</p>
+              <p class="name-atomic">Hássio</p>
+              <p class="weight-atomic">(277)</p>
+              <p class="valence-shell">2 8 18 32 32 11 2</p>
+            </li>
+
+            <li class="transition-metals" id="Mt">
+              <p class="number-atomic">109</p>
+              <p class="symbol">Mt</p>
+              <p class="name-atomic">Meitnério</p>
+              <p class="weight-atomic">(276)</p>
+              <p class="valence-shell">2 8 18 32 32 10 2</p>
+            </li>
+
+            <li class="transition-metals" id="Ds">
+              <p class="number-atomic">110</p>
+              <p class="symbol">Ds</p>
+              <p class="name-atomic">Darmstádio</p>
+              <p class="weight-atomic">(281)</p>
+              <p class="valence-shell">2 8 18 32 32 11 2</p>
+            </li>
+
+            <li class="transition-metals" id="Rg">
+              <p class="number-atomic">111</p>
+              <p class="symbol">Rg</p>
+              <p class="name-atomic">Roentgênio</p>
+              <p class="weight-atomic">(280)</p>
+              <p class="valence-shell">2 8 18 32 32 10 2</p>
+            </li>
+
+            <li class="transition-metals" id="Cn">
+              <p class="number-atomic">112</p>
+              <p class="symbol">Cn</p>
+              <p class="name-atomic">Copernício</p>
+              <p class="weight-atomic">(285)</p>
+              <p class="valence-shell">2 8 18 32 32 11 2</p>
+            </li>
+
+            <li class="post-transition-metals" id="Nh">
+              <p class="number-atomic">113</p>
+              <p class="symbol">Nh</p>
+              <p class="name-atomic">Nihônio</p>
+              <p class="weight-atomic">(284)</p>
+              <p class="valence-shell">2 8 18 32 32 10 2</p>
+            </li>
+
+            <li class="post-transition-metals" id="Fl">
+              <p class="number-atomic">114</p>
+              <p class="symbol">Fl</p>
+              <p class="name-atomic">Fleróvio</p>
+              <p class="weight-atomic">(289)</p>
+              <p class="valence-shell">2 8 18 32 32 11 2</p>
+            </li>
+
+            <li class="post-transition-metals" id="Mc">
+              <p class="number-atomic">115</p>
+              <p class="symbol">Mc</p>
+              <p class="name-atomic">Moscóvio</p>
+              <p class="weight-atomic">(288)</p>
+              <p class="valence-shell">2 8 18 32 32 10 2</p>
+            </li>
+
+            <li class="post-transition-metals" id="Lv">
+              <p class="number-atomic">116</p>
+              <p class="symbol">Lv</p>
+              <p class="name-atomic">Livermório</p>
+              <p class="weight-atomic">(293)</p>
+              <p class="valence-shell">2 8 18 32 32 11 2</p>
+            </li>
+
+            <li class="halogens" id="Ts">
+              <p class="number-atomic">117</p>
+              <p class="symbol">Ts</p>
+              <p class="name-atomic">Tenesso</p>
+              <p class="weight-atomic">(294)</p>
+              <p class="valence-shell">2 8 18 32 32 10 2</p>
+            </li>
+
+            <li class="noblegas" id="Og">
+              <p class="number-atomic">118</p>
+              <p class="symbol">Og</p>
+              <p class="name-atomic">Oganesônio</p>
+              <p class="weight-atomic">(294)</p>
+              <p class="valence-shell">2 8 18 32 32 11 2</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container-informationElement">
+        <div id="title-info">
+          <h3 id="name-atomic-info">Hidrogênio</h3>
+          <span id="class-atomic-info">Ametal</span>
+        </div>
+        <div id="main-info">
+          <model-viewer
+            src="assets/elements3d/1.glb"
+            auto-rotate
+            id="viewer3d-info"
+            autoplay
+            alt="descrição do modelo"
+            field-of-view="50deg"></model-viewer>
+          <p id="description-atomic-info">
+            O Hidrogênio é o elemento mais leve e abundante do universo,
+            essencial para a vida na Terra e usado em diversas indústrias. Ele é
+            encontrado em estrelas, água e moléculas orgânicas, e pode formar o
+            gás inflamável H2. Seus três isótopos principais são prótio,
+            deutério e trítio.
+          </p>
+          <div id="details-info">
+            <p>
+              Nome em Latim: <span id="latim-atomic-info">Hydrogenium</span>.
+            </p>
+            <p>Número atômico: <span id="number-atomic-info">1</span>.</p>
+            <p>Simbolo atômico: <span id="symbol-atomic-info">H</span>.</p>
+            <p>Peso atômico: <span id="weight-atomic-info">1.008</span>.</p>
+            <p>
+              Grupo: <span id="group-atomic-info">1</span> / Periodo:
+              <span id="period-atomic-info">1</span>.
+            </p>
+            <p>
+              Descoberto por:
+              <span id="discovered-for-info">Henry Cavendish</span>.
+            </p>
+            <p>
+              Descoberto em:
+              <span id="discovered-in-info">1766</span>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="utils/tableFunctions.js"></script>
+    <script src="utils/elementSelected.js"></script>
+    <script src="scriptIndexButtons.js"></script>
+    <script src="searchElement.js"></script>
+  </body>
+</html>
