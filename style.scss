@@ -56,6 +56,8 @@ body {
       font-family: "Comfortaa", cursive;
       padding: 15px;
       cursor: default;
+      transform: translateY(0) !important;
+      user-select: none;
     }
 
     #search-button {
@@ -194,7 +196,7 @@ body {
 
         /* ELEMENTOS QUADRADOS */
         li {
-          display: flex;
+          display: flex !important;
           flex-direction: column;
           position: relative;
           width: 65px;
