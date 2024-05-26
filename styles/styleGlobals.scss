@@ -1,0 +1,46 @@
+:root {
+  --noblegas-color: hsl(0, 45%, 40%);
+  --alkali-metals-color: hsl(36, 45%, 40%);
+  --alkaline-earth-metals-color: hsl(72, 45%, 40%);
+  --halogens-color: hsl(108, 45%, 30%);
+  --metalloids-color: hsl(144, 35%, 40%);
+  --post-transition-metals-color: hsl(180, 45%, 30%);
+  --transition-metals-color: hsl(216, 45%, 35%);
+  --reactive-nonmetals-color: hsl(252, 35%, 40%);
+  --actinides-color: hsl(288, 45%, 35%);
+  --lanthanides-color: hsl(324, 45%, 35%);
+
+  --background-color: hsl(260, 25%, 15%);
+  --background-menu-color: hsl(260, 35%, 10%);
+  --background-3dmodel-color: hsl(260, 35%, 14%);
+  --background-button-color: hsl(260, 35%, 38%);
+  --text-bright-color: rgba(255, 255, 255, 1);
+  --text-dark-color: rgba(0, 0, 0, 1);
+}
+
+@mixin positio($num1, $num2) {
+  grid-area: #{$num1} / #{$num2} / #{calc($num1 + 1)} / #{calc($num2 + 1)};
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  width: 100%;
+  background: var(--background-color);
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* BARRA DO MOVIMENTO*/
+  &::-webkit-scrollbar-thumb {
+    background: #8e8e8e;
+    border-radius: 5px;
+  }
+}

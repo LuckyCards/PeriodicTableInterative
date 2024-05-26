@@ -1,0 +1,367 @@
+@import "./styleGlobals.scss";
+
+@media (max-width: 780px) {
+  header.container-header {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    z-index: 5;
+    background-color: var(--background-menu-color);
+    overflow: hidden;
+
+    h1 {
+      text-align: center;
+      color: var(--text-bright-color);
+      font-family: "Comfortaa", cursive;
+      font-size: 22px;
+      padding: 0 55px;
+      user-select: none;
+      transition: transform 0.3s;
+      position: absolute;
+      transform: translateY(0px);
+      cursor: default;
+    }
+
+    #search-button {
+      position: absolute;
+      right: 0;
+      background: var(--background-button-color);
+      display: flex;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      align-items: center;
+      text-align: center;
+      margin-right: 10px;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+
+      #search-button-icon {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        left: 4.5px;
+        color: rgb(255, 255, 255);
+        transform: rotateZ(0deg);
+        transition: transform 0.5s;
+        gap: 10px;
+
+        #search-icon {
+          font-size: 20px;
+        }
+        #close-icon {
+          font-size: 25px;
+          margin-right: -2px;
+        }
+      }
+    }
+
+    #search-bar {
+      height: 30px;
+      background-color: var(--background-button-color);
+      border-radius: 50px;
+      border: 1px solid var(--text-bright-color);
+      color: var(--text-bright-color);
+      width: 230px;
+      user-select: none;
+      padding: 0 8px;
+      font-size: 17px;
+      font-family: "Comfortaa";
+      transition: transform 0.3s;
+      transform: translateY(-80px);
+    }
+  }
+
+  #flexbox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main.container-periodicTable {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    width: 100%;
+    height: 190px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    /* INDICE DA TABELA PERIODICA */
+    .container-index {
+      width: 100%;
+      position: absolute;
+
+      ul {
+        display: flex;
+        overflow: auto;
+        padding: 5px;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      button {
+        position: relative;
+        color: var(--text-bright-color);
+        display: flex;
+        min-width: 100px;
+        height: 35px;
+        font-family: "Comfortaa", cursive;
+        font-weight: 600;
+        font-size: 10px;
+        margin: 3px;
+        padding: 5px;
+        padding-bottom: 5px;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        border-style: none;
+        user-select: none;
+        cursor: pointer;
+        &:hover {
+          padding-top: 1px;
+        }
+      }
+
+      .buttonBackground {
+        width: 100%;
+        padding-top: 5px;
+        position: absolute;
+        bottom: 0px;
+        z-index: -1;
+
+        transition: padding-top 0.5s;
+      }
+    }
+
+    /* TABELA PERIODICA */
+    .container-blocks {
+      width: fit-content;
+      height: fit-content;
+      margin-top: 70px;
+      padding: 0 8px;
+      transform: scale(1.3);
+      transform-origin: top left;
+
+      /* BLOCOS DE ELEMENTOS */
+      #elements-blocks {
+        display: grid;
+        justify-items: center;
+        justify-content: center;
+        grid-template-columns: repeat(118, 80px);
+        gap: 5px;
+
+        /* ELEMENTOS QUADRADOS */
+        li {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          width: 80px;
+          height: 80px;
+          cursor: pointer;
+          padding: 2px;
+          border: 3px solid rgba(0, 0, 0, 0.3);
+          border-radius: 7px;
+          justify-content: space-between;
+
+          user-select: none;
+
+          background: var(--background-color);
+          color: var(--text-bright-color);
+          transition: border 0.3s;
+
+          .number-atomic {
+            text-align: left;
+            font-size: 12px;
+            font-family: "Karla", sans-serif;
+            font-weight: 500;
+            line-height: 10px;
+          }
+
+          .symbol {
+            text-align: left;
+            font-size: 25px;
+            line-height: 27px;
+            font-family: "Comfortaa", cursive;
+            margin-top: 5px;
+            margin-bottom: -1px;
+            font-weight: 400;
+          }
+
+          .name-atomic {
+            text-align: center;
+            font-family: "Karla", sans-serif;
+            font-weight: 500;
+            max-width: 100%;
+            text-align: left;
+            font-size: 10.1px;
+            overflow: hidden;
+            width: 58px;
+            text-overflow: ellipsis;
+            transform: scaleY(1.2);
+          }
+
+          .weight-atomic {
+            display: flex;
+            font-size: 12px;
+            font-family: "Karla", sans-serif;
+          }
+
+          .valence-shell {
+            display: flex;
+            max-width: min-content;
+            font-family: "Karla", sans-serif;
+            font-size: 10.5px;
+            line-height: 10.1px;
+            text-align: end;
+            position: absolute;
+            top: 2px;
+            right: 2px;
+          }
+        }
+      }
+
+      /* CATEGORIAS DOS ELEMENTOS */
+      #elements-blocks {
+        /* Gases Nobres  */
+        .noblegas {
+          background-color: var(--noblegas-color);
+        }
+        /* Metais Alcalinos */
+        .alkali-metals {
+          background-color: var(--alkali-metals-color);
+        }
+
+        /* Metais Alcalino-terrosos*/
+        .alkaline-earth-metals {
+          background-color: var(--alkaline-earth-metals-color);
+        }
+
+        /* Metais de Transição */
+        .transition-metals {
+          background-color: var(--transition-metals-color);
+        }
+
+        /* metalóides */
+        .metalloids {
+          background-color: var(--metalloids-color);
+        }
+
+        /* Metais Pós-transição */
+        .post-transition-metals {
+          background-color: var(--post-transition-metals-color);
+        }
+
+        /* Ametais Reativos */
+        .reactive-nonmetals {
+          background-color: var(--reactive-nonmetals-color);
+        }
+
+        /* Halogênios */
+        .halogens {
+          background-color: var(--halogens-color);
+        }
+
+        /* Actinídeos */
+        .actinides {
+          background-color: var(--actinides-color);
+        }
+
+        /* Lantanídeos */
+        .lanthanides {
+          background-color: var(--lanthanides-color);
+        }
+      }
+    }
+  }
+
+  aside.container-informationElement {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+    color: var(--text-bright-color);
+    background-color: var(--background-menu-color);
+
+    > button {
+      display: none;
+    }
+
+    #title-info {
+      color: var(--text-bright-color);
+      font-family: "Comfortaa", cursive;
+      font-size: 26px;
+      margin-top: 15px;
+      h3 {
+        font-size: 48px;
+      }
+    }
+
+    #visual-info {
+      width: 100%;
+      #viewer3d-info {
+        width: 100%;
+        margin: 20px 0;
+        background-color: var(--background-3dmodel-color);
+        height: 320px;
+      }
+    }
+
+    #description-info {
+      h4 > p {
+        text-indent: 15px;
+        text-align: justify;
+        hyphens: auto;
+        font-size: 19.2px;
+        font-weight: 400;
+        font-family: "Karla", sans-serif;
+      }
+      p {
+        font-size: 20px;
+        font-family: "Karla", sans-serif;
+      }
+    }
+
+    #details-info {
+      p {
+        font-size: 20px;
+        font-family: "Karla", sans-serif;
+      }
+
+      #viewerlocations2d-info {
+        display: flex;
+        margin: 20px 0;
+        width: 100%;
+      }
+    }
+
+    #properties-info {
+      p {
+        font-size: 20px;
+        font-family: "Karla", sans-serif;
+      }
+    }
+
+    h4 {
+      font-family: "Comfortaa", cursive;
+      font-size: 27px;
+      margin-top: 15px;
+    }
+
+    span {
+      font-size: 21.5px;
+      font-weight: 400;
+    }
+  }
+}

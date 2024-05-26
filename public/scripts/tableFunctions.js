@@ -36,7 +36,7 @@ function unselect() {
           "repeat(3, 65px) 10px repeat(15, 65px)";
       }
     });
-  });
+  })
 }
 
 function select(buttonSelected, buttonsNotSelected, buttonId) {
@@ -92,7 +92,6 @@ window.addEventListener("resize", () => {
   if (window.innerWidth <= 780 && alternate == false) {
     gridBlocks.style.gridTemplateColumns = "repeat(118, 80px)";
     alternate = true;
-
     if (filtered == true) {
       unselect();
     }

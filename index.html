@@ -8,7 +8,7 @@
       rel="shortcut icon"
       href="./assets/images/icon.png"
       type="image/x-icon" />
-    <link rel="stylesheet" href="style.scss" />
+    <link rel="stylesheet" href="styles/importStyles.scss" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -1110,60 +1110,132 @@
               <p class="valence-shell">2 8 18 32 32 11 2</p>
             </li>
           </ul>
+
+          <div class="periodAndGroups">
+            <ul class="groups">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+            </ul>
+
+            <ul class="periods">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li><!--vazio--></li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>15</li>
+              <li>16</li>
+              <li>17</li>
+              <li>18</li>
+            </ul>
+          </div>
         </div>
       </main>
 
       <aside class="container-informationElement">
         <button onclick="hideAside()">
-          X
+          <ion-icon name="close" id="close-icon"></ion-icon>
         </button>
         <div id="title-info">
-          <h3 id="name-atomic-info">Hidrogênio</h3>
-          <span id="class-atomic-info">Ametal</span>
+          <h3 class="informations">Hidrogênio</h3>
+          <p class="informations">Ametal</p>
         </div>
-        <div id="main-info">
+        <div id="visual-info">
           <model-viewer
             src="assets/elements3d/1.glb"
             auto-rotate
             id="viewer3d-info"
             autoplay
+            class="informations"
             alt="descrição do modelo"
-            field-of-view="50deg"></model-viewer>
-          <p id="description-atomic-info">
-            O Hidrogênio é o elemento mais leve e abundante do universo,
-            essencial para a vida na Terra e usado em diversas indústrias. Ele é
-            encontrado em estrelas, água e moléculas orgânicas, e pode formar o
-            gás inflamável H2. Seus três isótopos principais são prótio,
-            deutério e trítio.
+            field-of-view="50deg">
+          </model-viewer>
+        </div>
+        <div id="description-info">
+          <h4>
+            Sobre o elemento:
+            <p class="informations">
+              O hidrogênio é o elemento mais simples e abundante do universo. É
+              um gás incolor e altamente inflamável. O hidrogênio desempenha um
+              papel fundamental na formação de estrelas e é uma fonte potencial
+              de energia limpa por meio da fusão nuclear.
+            </p>
+          </h4>
+          <p>
+            Descoberto por:
+            <span class="informations">Henry Cavendish</span>.
           </p>
-          <div id="details-info">
-            <p>
-              Nome em Latim: <span id="latim-atomic-info">Hydrogenium</span>.
-            </p>
-            <p>Número atômico: <span id="number-atomic-info">1</span>.</p>
-            <p>Simbolo atômico: <span id="symbol-atomic-info">H</span>.</p>
-            <p>Peso atômico: <span id="weight-atomic-info">1.008</span>.</p>
-            <p>
-              Grupo: <span id="group-atomic-info">1</span> / Periodo:
-              <span id="period-atomic-info">1</span>.
-            </p>
-            <p>
-              Descoberto por:
-              <span id="discovered-for-info">Henry Cavendish</span>.
-            </p>
-            <p>
-              Descoberto em:
-              <span id="discovered-in-info">1766</span>.
-            </p>
+          <p>
+            Descoberto em:
+            <span class="informations">1766</span>.
+          </p>
+        </div>
+        <div id="details-info">
+          <h4>Detalhes:</h4>
+          <p>Nome do elemento: <span class="informations">Hidrogênio</span>.</p>
+          <p>
+            Nome em Latim:
+            <span class="informations">Hydrogenium</span>.
+          </p>
+          <p>Número atômico: <span class="informations">1</span>.</p>
+          <p>Simbolo atômico: <span class="informations">H</span>.</p>
+          <p>Massa atômica: <span class="informations">1.008</span>.</p>
+          <p>Radioatividade: <span class="informations">Nula</span>.</p>
+          <p>
+            Configuração electrónica:
+            <span class="informations">1s¹</span>.
+          </p>
+          <p>
+            Grupo: <span class="informations">1</span> / Periodo:
+            <span class="informations">1</span>.
+          </p>
+
+          <h4>Localização na Tabela:</h4>
+          <img
+            src="assets/locations2d/1.jpg"
+            alt=""
+            class="informations"
+            id="viewerlocations2d-info" />
+
+          <div id="properties-info">
+            <div>
+              <h4>Propriedades Fisicas:</h4>
+              <p>
+                Estado da matéria: <span class="informations">Gasoso</span>.
+              </p>
+              <p>Ponto de fusão: <span class="informations">14.01</span>K.</p>
+              <p>
+                Ponto de ebulição: <span class="informations">20.28</span>K.
+              </p>
+              <p>Densidade: <span class="informations">0.0899</span></p>
+              <h4>Propriedades Atômicas:</h4>
+              <p>Eletronegatividade: <span class="informations">2.20</span>.</p>
+              <p>Raio Atômico: <span class="informations">53</span> pm.</p>
+            </div>
           </div>
         </div>
       </aside>
     </div>
 
-    <script src="utils/tableFunctions.js"></script>
-    <script src="utils/elementSelected.js"></script>
-    <script src="scriptIndexButtons.js"></script>
-    <script src="searchElement.js"></script>
-    <script src="asideRemoval.js"></script>
+    <script src="scripts/asideRemoval.js"></script>
+    <script src="scripts/elementSelected.js"></script>
+    <script src="scripts/scriptIndexButtons.js"></script>
+    <script src="scripts/searchElement.js"></script>
+    <script src="scripts/tableFunctions.js"></script>
   </body>
 </html>
